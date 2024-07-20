@@ -44,7 +44,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 50px 20px 20px 20px;
+  padding: 60px 20px 20px 20px;
 }
 .content {
   font-size: larger;
@@ -75,4 +75,12 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
 }
