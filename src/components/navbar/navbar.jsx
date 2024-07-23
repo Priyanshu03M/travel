@@ -1,5 +1,6 @@
-import react from "react";
+"use client"
 import Link from "next/link";
+
 
 function Navbar() {
     return (
@@ -12,10 +13,10 @@ function Navbar() {
             <div className="navbar-end">
                 <input type="search" name="" placeholder="Explore by destination" id="search" />
                 <div>
-                    <Link href="/travel-guides">Travel guides</Link>
+                    <Link href="/signup">Sign up</Link>
                 </div>
                 <div>
-                    <Link href="./hotels">Hotels</Link>
+                    <Link href="/login">Login</Link>
                 </div>
             </div>
             

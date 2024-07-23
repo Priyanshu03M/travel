@@ -1,5 +1,5 @@
-import Blog from "../components/blog";
-import Navbar from "../components/navbar";
+import Blog from "../../components/blog";
+import Navbar from "../../components/navbar/navbar";
 
 function Plan(){
     return (
