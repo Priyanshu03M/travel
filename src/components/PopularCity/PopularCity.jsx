@@ -16,11 +16,11 @@ const PopularCity = () => {
     ]
   return (
     <>
+      <div style={styles.container}>
         {list.map((city, index) =>(
-            <div style={styles.container}>
                 <CityCard imageUrl={city.image} placeName={city.city}/>
-            </div>
-        ))}
+              ))}
+      </div>
     </>
   )
 }
@@ -30,8 +30,8 @@ const styles = {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: '100vh',
-      flexWrap: 'wrap', // Ensures the cards wrap to the next line if needed
+      height: '70vh',
+      flexWrap: 'wrap',
     },
   };
 
