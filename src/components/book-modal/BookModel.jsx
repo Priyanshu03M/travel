@@ -32,8 +32,8 @@ const BookModel = ({
         }
     }
   return (
-    <div className='fixed z-30 backdrop-blur top-0 left-0 min-h-full w-full shadow-lg'>
-        <div className='bg-slate-100 w-1/4 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pb-8'>
+    <div className='fixed z-30 backdrop-blur top-0 left-0 h-full w-full shadow-lg'>
+        <div className='bg-slate-100 w-1.2/3 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pb-8'>
             <div className='p-4 border-b border-slate-500 flex items-center justify-between'>
                 <h3 className='font-semibold text-2xl'>
                     Book your hotel
@@ -64,9 +64,14 @@ const BookModel = ({
                     <span>X</span>
                     <span>{calcDaysDiff()}</span>
                 </div>
-                <div className="text-slate-700 mt-4">
+                <div className="text-slate-700">
                     Total Price: {format((300 * calcDaysDiff()), { locale: "en-IN" })}
                 </div>
+            </div>
+            <div className='w-full flex items-center mt-6'>
+                <button className='w-3/4 mx-auto cursor-pointer rounded-lg py-3 px-6 text-xl text-white bg-blue-500 transition-all hover:bg-blue-600'>
+                Submit
+                </button>
             </div>
         </div>
     </div>
