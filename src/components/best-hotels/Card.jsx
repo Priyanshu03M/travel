@@ -23,7 +23,7 @@ const Card = ({place}) => {
                     {place.name}
                 </h2>
                 <span className='p-2 rounded-full bg-blue-600 text-white flex items-center gap-1'>
-                    <AiFillStar color="white"/>
+                    <AiFillStar color="white" size={"1.8em"}/>
                     <span className='text-white'>
                         {place.reviews}
                     </span>
