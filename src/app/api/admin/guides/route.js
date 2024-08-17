@@ -1,0 +1,31 @@
+import { NextResponse } from 'next/server'
+import { connect } from 'Qui/dbconfig/dbconfig'
+import Guide from 'Qui/models/guidesModel'
+
+connect()
+
+export async function POST(request) {
+    try {
+        const reqBody = await request.json();
+        const { title, city, price, maxGroupSize, description, image } = reqBody;
+        const newGuide = new Guide({ title, city, price, maxGroupSize, description, image })
+        const savedGuide = await newGuide.save();
+        const res = NextResponse.json({ message: "Guide created Successfull" }, { success: true })
+        return res
+    }
+    catch (error) {
+        console.error('Error:', error);
+        return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+}
+
+export async function GET() {
+    const book = await Guide.find();
+    return NextResponse.json({book})
+}
+
+export async function DELETE(request) {
+    const id = request.nextUrl.searchParams.get("id");
+    await Guide.findByIdAndDelete(id)
+    return NextResponse.json({message: "Guide deleted"}, {status:200});
+}

@@ -1,16 +1,19 @@
-import Image from "next/image";
-import Navbar from "../components/navbar/navbar";
-import Blog from "../components/blog";
-import BestHostels from "../components/best-hotels/BestHostels";
-import PopularCity from "Qui/components/PopularCity/PopularCity";
+import Navbar from "../components/Navbar";
+import Blog from "Qui/components/Blog";
+import TestimonialCarousel from "Qui/components/Testimonial";
+import BestHostels from "Qui/components/best-hotels/BestHostels";
+import Footer from "../components/footer";
+import ScrollToTopButton from "Qui/components/moveTop";
 
 export default function Home() {
   return (
     <div>
       <Navbar/>
       <Blog/>
-      <PopularCity/>
+      <TestimonialCarousel/>
       <BestHostels/>
+      <ScrollToTopButton/>
+      <Footer/>
     </div>
   );
 }

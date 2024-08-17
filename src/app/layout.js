@@ -1,8 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Layout from "Qui/components/layout/Layout";
-import Toast from "Qui/utils/toast";
-import Provider from "Qui/utils/sessionProvider";
+import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "Qui/utils/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,13 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>
-          <Toast/>
-          <Layout>
-          {children}
-          </Layout>
-        </Provider>
-        </body>
+        <AuthProvider>
+          <Toaster position="bottom-center" />
+            {children}
+        </AuthProvider>
+      </body>
     </html>
   );
 }

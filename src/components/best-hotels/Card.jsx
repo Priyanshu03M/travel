@@ -4,13 +4,14 @@ import Image from 'next/image'
 import { AiFillStar } from "react-icons/ai";
 import { format } from 'currency-formatter';
 
+
 const Card = ({place}) => {
   return (
-    <Link href={"/details/1"} className='h-[450px] w-[250px] flex flex-col rounded-xl cursor-pointer transition-all shadow-md hover:shadow-lg'>
+    <Link href={`/details/${place.id}`} className='h-[450px] w-[250px] flex flex-col rounded-xl cursor-pointer transition-all shadow-md hover:shadow-lg'>
         <div className='relative h-2/3 w-full'>
             <Image
                 src={place.image}
-                className='h-full w-full rounded-tl-xl rounded-tr-xl object-cover'
+                className='h-full w-full rounded-tl-xl'
                 alt="Location's image"
             />
             <div className='absolute right-0 bottom-0 p-2 bg-blue-700 text-white rounded-tl-xl font-semibold'>
