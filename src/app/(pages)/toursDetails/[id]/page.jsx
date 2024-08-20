@@ -1,12 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'reactstrap';
-import { FaStar, FaRegStar } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-// import details from 'Qui/data/guides';
-import reviewsDetails from 'Qui/data/review';
+import Review from 'Qui/components/Reviews/review';
+import ReviewForm from 'Qui/components/Reviews/reviewForm';
 
 const getGuides = async () => {
   try {
@@ -77,8 +76,6 @@ const Tours = (props) => {
   if (!detail) {
     return <div>Detail not found</div>;
   }
-
-  const sortedReviews = reviewsDetails.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const { image, title, description, price, reviews, city, maxGroupSize } = detail;
 
@@ -200,52 +197,10 @@ const Tours = (props) => {
                   </div>
                 </div>
 
-                <div className="rounded-md p-8 border border-[#F6E4E4]">
-                  <h4 className="mb-12">Reviews ({reviews?.length} reviews)</h4>
-                  <form>
-                    <div className="flex items-center gap-5 mb-4 text-base cursor-pointer">
-                      <span className="flex items-center gap-1 mb-4 text-base cursor-pointer">1<FaStar className="text-yellow-500" /></span>
-                      <span className="flex items-center gap-1 mb-4 text-base cursor-pointer">2<FaStar className="text-yellow-500" /></span>
-                      <span className="flex items-center gap-1 mb-4 text-base cursor-pointer">3<FaStar className="text-yellow-500" /></span>
-                      <span className="flex items-center gap-1 mb-4 text-base cursor-pointer">4<FaStar className="text-yellow-500" /></span>
-                      <span className="flex items-center gap-1 mb-4 text-base cursor-pointer">5<FaStar className="text-yellow-500" /></span>
-                    </div>
-                    <div className="flex space-x-4 w-1/2">
-                      <input
-                        type="text"
-                        placeholder="Share your thoughts"
-                        className="flex-1 py-2 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <button
-                        type="submit"
-                        className="py-2 px-6 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
+                <ReviewForm id={detail._id}/>
 
-                </div>
-                <div className="rounded-md p-8 border border-[#F6E4E4]">
-                  <h2 className="text-xl font-bold mb-4">Customer Reviews</h2>
-                  <div className="space-y-4">
-                    {sortedReviews.map(review => (
-                      <div key={review.id} className="p-4 border border-gray-300 rounded-lg">
-                        <div className="flex items-center justify-between">
-                          <p className="text-gray-700">
-                            <strong>{review.author}</strong> - <em>{new Date(review.date).toLocaleDateString()}</em>
-                          </p>
-                          <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                              i < review.rating ? <FaStar key={i} className="text-yellow-500" /> : <FaRegStar key={i} className="text-yellow-500" />
-                            ))}
-                          </div>
-                        </div>
-                        <p>{review.text}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <Review id={detail._id}/>
+
               </div>
             </Col>
           </Row>
