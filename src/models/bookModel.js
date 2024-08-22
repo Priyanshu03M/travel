@@ -1,6 +1,16 @@
 import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema({
+    tourId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'guides',
+        required: true,
+    },
+    // userId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'users',
+    //     required: true,
+    // },
     name: {
         type: String,
         required: true,

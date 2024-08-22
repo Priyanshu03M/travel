@@ -35,6 +35,7 @@ const Tours = (props) => {
   
   
   props.params._id = id;
+  const [tourId, setTourId] = useState(id)
 
   useEffect(() => {
     const fetchGuides = async () => {
@@ -77,7 +78,7 @@ const Tours = (props) => {
     return <div>Detail not found</div>;
   }
 
-  const { image, title, description, price, reviews, city, maxGroupSize } = detail;
+  const { image, title, description, price, city, maxGroupSize } = detail;
 
   const handleGuestsChange = (e) => {
     const guestCount = parseInt(e.target.value, 10);
@@ -87,6 +88,7 @@ const Tours = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const booking = {
+      tourId,
       name,
       email,
       date,

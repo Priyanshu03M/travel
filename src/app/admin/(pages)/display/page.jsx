@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react'
 import { MdEditDocument } from "react-icons/md";
 import Link from 'next/link';
-import { FaHome } from 'react-icons/fa';
 import Removebtn from '../../components/Removebtn';
 import HomeIcon from '../../components/home';
+import { useRouter } from 'next/navigation';
 
-function Card({ guide }) {
+function Card({ guide , onClick}) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -14,7 +14,7 @@ function Card({ guide }) {
     };
 
     return (
-        <div className="border rounded-lg overflow-hidden shadow-lg bg-white">
+        <div onClick={onClick} className="border rounded-lg overflow-hidden shadow-lg bg-white cursor-pointer">
             {/* Image */}
             <img src={guide.image} alt={guide.title} className="w-full h-48 object-cover" />
 
@@ -74,6 +74,11 @@ const getGuides = async () => {
 export default function DisplayPage() {
     const [guides, setGuides] = useState([]);
     const [loading, setLoading] = useState(true);
+    const router = useRouter();
+
+    const handleCardClick = (guide) => {
+        router.push(`/admin/guideDetails/${guide._id}`);
+    };
     useEffect(() => {
         const fetchGuides = async () => {
             try {
@@ -109,7 +114,7 @@ export default function DisplayPage() {
                 {/* Grid for displaying guides */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
                     {guides.map((guide) => (
-                        <Card key={guide._id} guide={guide} />
+                        <Card key={guide._id} guide={guide} onClick={() => handleCardClick(guide)}/>
                     ))}
                 </div>
             </div>
