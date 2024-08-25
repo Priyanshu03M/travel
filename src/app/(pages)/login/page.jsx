@@ -12,7 +12,6 @@ const login = () => {
   const [user, setUser] = useState({
     email: '',
     password: '',
-    isAdmin: false,
   });
 
   const [loading, setLoading] = useState(false);
@@ -21,7 +20,7 @@ const login = () => {
     try {
       const response = await axios.post("/api/users/login", user);
       toast.success("Login success")
-      loginp();
+      loginp(user);
       router.push('/')
     } catch (error) {
       if (error.response && error.response.status === 400) {
