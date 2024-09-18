@@ -1,21 +1,32 @@
 import { NextResponse } from 'next/server'
 import { connect } from 'Qui/dbconfig/dbconfig'
 import Guide from 'Qui/models/guidesModel'
+import cloudinary from 'Qui/utils/cloudinary'
 
 connect()
 
 export async function POST(request) {
     try {
         const reqBody = await request.json();
-        const { title, city, price, maxGroupSize, description, image } = reqBody;
-        const newGuide = new Guide({ title, city, price, maxGroupSize, description, image })
+        const { title, city, price, maxGroupSize, description, imageUrl } = reqBody; // imageUrl is passed here
+
+        // Create a new guide with the uploaded image URL
+        const newGuide = new Guide({
+            title,
+            city,
+            price,
+            maxGroupSize,
+            description,
+            image: imageUrl // Use the uploaded image URL
+        });
+
         const savedGuide = await newGuide.save();
-        const res = NextResponse.json({ message: "Guide created Successfull" }, { success: true })
-        return res
-    }
-    catch (error) {
+
+        // Send success response
+        return NextResponse.json({ message: "Guide created successfully", success: true, guide: savedGuide });
+    } catch (error) {
         console.error('Error:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 })
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 

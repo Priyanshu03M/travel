@@ -6,32 +6,57 @@ import axios from 'axios'
 import HomeIcon from '../../components/home'
 
 const Dashboard = () => {
-    const router = useRouter()
+    const router = useRouter();
     const [title, setTitle] = useState('');
     const [city, setCity] = useState('');
     const [price, setPrice] = useState('');
     const [maxGroupSize, setMaxGroupSize] = useState(1);
     const [description, setDescription] = useState('');
     const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file); // Convert image to Base64
+        reader.onloadend = () => {
+            setImagePreview(reader.result); // This is the Base64 image data
+        };
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const guideData = {
-            title,
-            city,
-            price: parseFloat(price),
-            maxGroupSize: parseInt(maxGroupSize),
-            description,
-            image,
-        };
+
+        if (!image) {
+            toast.error("Please select an image");
+            return;
+        }
+
         try {
-            const response = await axios.post("/api/admin/guides", guideData);
-            toast.success("Guide created Successfull");
+            // Upload the image to Cloudinary first
+            const uploadResponse = await axios.post('/api/admin/upload', { image: imagePreview });
+            const imageUrl = uploadResponse.data.url;
+
+            // Proceed to create the guide with the uploaded image URL
+            const guideData = {
+                title,
+                city,
+                price: parseFloat(price),
+                maxGroupSize: parseInt(maxGroupSize),
+                description,
+                imageUrl // Use the URL from Cloudinary
+            };
+
+            await axios.post('/api/admin/guides', guideData);
+            toast.success("Guide created successfully");
             router.push('/admin/display');
         } catch (error) {
             toast.error(error.message);
         }
-    }
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
             <div className="absolute top-6 left-6">
@@ -100,16 +125,17 @@ const Dashboard = () => {
                         />
                     </div>
 
-                    {/* Image URL Input */}
+                    {/* Image Input */}
                     <div className="mb-6">
-                        <label className="block text-gray-700 font-semibold mb-2">Image URL</label>
+                        <label className="block text-gray-700 font-semibold mb-2">Image</label>
                         <input
-                            type="text"
+                            type="file"
+                            accept="image/*"
                             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
+                            onChange={handleImageChange}
                             required
                         />
+                        {imagePreview && <img src={imagePreview} alt="Preview" className="mt-4 w-full h-48 object-cover" />}
                     </div>
 
                     {/* Submit Button */}
@@ -125,4 +151,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default Dashboard;
