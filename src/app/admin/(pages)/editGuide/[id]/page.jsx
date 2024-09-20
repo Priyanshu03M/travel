@@ -5,7 +5,7 @@ import HomeIcon from '../../../components/home'
 
 const getGuideById = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/admin/guides/${id}`, { cache: 'no-store' });
+    const res = await fetch(`${process.env.API_BASE_URL}/api/users/guides/${id}`, { cache: 'no-store' });
     if (!res.ok) {
       throw new Error("Failed to fetch guide");
     }

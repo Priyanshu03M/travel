@@ -7,7 +7,7 @@ import guides from 'Qui/data/guides';
 
 const getGuides = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/users/guides', { cache: 'no-store' });
+    const res = await fetch(`${process.env.API_BASE_URL}/api/users/guides`, { cache: 'no-store' });
     if (!res.ok) {
       toast.error("Guides not fetched");
       return { book: [] };  // Return an object with an empty book array

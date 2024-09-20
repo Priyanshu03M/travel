@@ -10,7 +10,7 @@ const Removebtn = ({ id }) => {
         const confirmed = confirm("Are you sure?");
         if (!confirmed) return;
         try {
-            const res = await fetch(`http://localhost:3000/api/admin/guides?id=${id}`, {
+            const res = await fetch(`${process.env.API_BASE_URL}/api/users/guides?id=${id}`, {
                 method: "DELETE",
             });
             if (res.ok) {
