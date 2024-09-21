@@ -1,4 +1,4 @@
-import cloudinary from 'Qui/utils/cloudinary';
+import cloudinary from '../../../../utils/cloudinary';
 
 
 export async function POST(req) {

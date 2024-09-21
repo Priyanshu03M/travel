@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Container, Row } from "reactstrap";
-import { useAuth } from "Qui/utils/AuthContext";
+import { useAuth } from "../utils/AuthContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useEffect, useState } from "react";

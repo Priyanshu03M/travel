@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import testimonials from 'Qui/data/testimonial'
+import testimonials from '../data/testimonial'
 
 const TravelTestimonialCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -4,8 +4,8 @@ import { Col, Container, Row } from 'reactstrap';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import Review from 'Qui/components/Reviews/review';
-import ReviewForm from 'Qui/components/Reviews/reviewForm';
+import Review from '../../../../components/Reviews/review';
+import ReviewForm from '../../../../components/Reviews/reviewForm';
 
 const getGuides = async () => {
   try {

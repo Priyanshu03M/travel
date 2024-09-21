@@ -1,7 +1,7 @@
 // pages/guideDetails/[id].js
 'use client'
 
-import Review from "Qui/components/Reviews/review";
+import Review from "../../../../../components/Reviews/review";
 import { useEffect, useState } from "react";
 
 const getGuides = async () => {

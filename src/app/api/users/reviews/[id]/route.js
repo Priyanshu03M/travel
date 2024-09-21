@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import {connect} from 'Qui/dbconfig/dbconfig'
-import Review from 'Qui/models/reviewModel';
+import {connect} from '../../../../../dbconfig/dbconfig'
+import Review from '../../../../../models/reviewModel';
 
 connect()
 

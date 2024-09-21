@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
-import Footer from 'Qui/components/footer';
-import Navbar from 'Qui/components/Navbar';
+import Footer from '../../../components/footer';
+import Navbar from '../../../components/Navbar';
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
 

@@ -1,5 +1,5 @@
-import {connect} from 'Qui/dbconfig/dbconfig'
-import User from 'Qui/models/userModel'
+import {connect} from '../../../../dbconfig/dbconfig'
+import User from '../../../../models/userModel'
 import { NextRequest, NextResponse} from 'next/server'
 import bcryptjs from 'bcryptjs'
 
