@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import Blog from "../components/Blog";
+import Blog from "../components/Blog.jsx";
 import TestimonialCarousel from "../components/Testimonial";
 import Footer from "../components/footer";
 import ScrollToTopButton from "../components/moveTop";
