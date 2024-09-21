@@ -3,13 +3,14 @@ import Link from 'next/link';
 import Footer from 'Qui/components/footer';
 import Navbar from 'Qui/components/Navbar';
 import React, { useState, useEffect } from 'react'
-import guides from 'Qui/data/guides';
+import toast from 'react-hot-toast';
 
 const getGuides = async () => {
   try {
-    const res = await fetch(`${process.env.API_BASE_URL}/api/users/guides`, { cache: 'no-store' });
+    const res = await fetch(`/api/users/guides`, { cache: 'no-store' });
     if (!res.ok) {
       toast.error("Guides not fetched");
+      console.log(process.env.API_BASE_URL);
       return { book: [] };  // Return an object with an empty book array
     }
     const data = await res.json();
