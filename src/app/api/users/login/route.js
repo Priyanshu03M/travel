@@ -24,7 +24,7 @@ export async function POST(request) {
             email: user.email,
             isAdmin: user.isAdmin,
         }
-        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1h" })
+        const token = jwt.sign(tokenData, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: "1h" })
 
         const response = NextResponse.json({ error: "Success" }, { success: true })
         response.cookies.set("token", token, {
