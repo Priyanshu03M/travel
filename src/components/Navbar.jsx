@@ -5,6 +5,8 @@ import { useAuth } from "../utils/AuthContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 const fetchUsers = async () => {
   try {
@@ -17,7 +19,7 @@ const fetchUsers = async () => {
     return data;
   } catch (error) {
     console.error("Error fetching users:", error);
-    return { users: [] }; 
+    return { users: [] };
   }
 };
 
@@ -83,9 +85,6 @@ function Navbar() {
             {/* Logo */}
 
             {/* Menu start */}
-            <div className="flex items-center gap-5 flex-grow justify-center">
-              <input className="p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" type="search" placeholder="Explore by destination" />
-            </div>
             {/* Menu start */}
 
             {/* Menu end */}

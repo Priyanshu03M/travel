@@ -4,6 +4,7 @@ import Footer from '../../../components/footer';
 import Navbar from '../../../components/Navbar';
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const getGuides = async () => {
   try {
@@ -22,9 +23,12 @@ const getGuides = async () => {
 };
 
 const Tours = () => {
+  const router = useRouter();
   const [guides, setGuides] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
+  console.log(router.query);
+  
 
   useEffect(() => {
     const fetchGuides = async () => {
@@ -70,11 +74,6 @@ const Tours = () => {
             placeholder="Search for a destination"
             className="border p-2 w-64 rounded-md"
           />
-          <div className="mt-4">
-            <button className="bg-gray-200 py-2 px-4 rounded-full mr-2">Japan</button>
-            <button className="bg-gray-200 py-2 px-4 rounded-full mr-2">Oahu</button>
-            <button className="bg-gray-200 py-2 px-4 rounded-full">See more...</button>
-          </div>
         </div>
         <h2 className="text-2xl font-bold mb-4">Recent guides</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
