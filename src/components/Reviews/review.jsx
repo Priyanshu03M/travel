@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 
 const getReviews = async (tourId) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/users/reviews/${tourId}`, { cache: 'no-store' });
+        const res = await fetch(`/api/users/reviews/${tourId}`, { cache: 'no-store' });
         if (!res.ok) {
             toast.error("Reviews not fetched");
             return { review: [] };
