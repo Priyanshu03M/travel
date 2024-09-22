@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const fetchUsers = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/users/login', { cache: 'no-store' });
+    const res = await fetch('/api/users/login', { cache: 'no-store' });
     if (!res.ok) {
       toast.error("Users not fetched");
       return { users: [] };

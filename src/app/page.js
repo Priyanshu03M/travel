@@ -14,7 +14,7 @@ function Blog() {
                     The world is yours to explore. Travel planning at its best. Build, organize, and map your custom itineraries in a free travel app designed for vacations & road trips, powered by our trip planner AI.
                 </p>
                 <div className="flex justify-center mt-4">
-                    <Link href="./trip">
+                    <Link href="/tours">
                         <button className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
                             Start Planning
                         </button>
